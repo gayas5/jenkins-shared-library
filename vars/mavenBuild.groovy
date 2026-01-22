@@ -1,7 +1,9 @@
-def call() {
-    echo "Building using Jenkins Maven Tool"
+def call(String dir = '.') {
+    echo "Running Maven build in directory: ${dir}"
 
-    withMaven(maven: 'maven-3') {
-        sh 'mvn clean package'
+    dir(dir) {
+        withMaven(maven: 'maven-3') {
+            sh 'mvn clean package'
+        }
     }
 }
