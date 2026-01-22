@@ -1,4 +1,7 @@
 def call() {
-    echo "Starting Maven Build..."
-    sh 'mvn clean package'
+    echo "Building using Jenkins Maven Tool"
+
+    withMaven(maven: 'maven-3') {
+        sh 'mvn clean package'
+    }
 }
